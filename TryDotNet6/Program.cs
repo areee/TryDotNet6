@@ -4,9 +4,11 @@
 
 DateOnly testingASpecificDate = new(2021, 09, 25);
 
-Console.WriteLine($"Current date: {testingASpecificDate}");
+Console.WriteLine($"Specific date: {testingASpecificDate}");
 
 DateTime today = DateTime.Now;
+
+// NEW: DateOnly
 
 DateOnly dateAfterTwoYears = DateOnly.FromDateTime(today.AddYears(2));
 
@@ -25,14 +27,29 @@ animals.Add(dog2);
 Animal dog3 = dog1 with { Breed = "Karelian Beer Dog", Age = 1 }; // ;)
 animals.Add(dog3);
 
+Animal dog4 = new() { Species = IAnimal.SpeciesEnum.Cat, Name = "Mirri", Age = 2, Breed = "Maine Coon" };
+animals.Add(dog4);
+
 foreach (var animal in animals)
 {
-    Console.WriteLine($"Name of the dog: {animal.Name}; breed of the dog: {animal.Breed}; species of the dog: {animal.Species}");
+    Console.WriteLine($"Name of the animal: {animal.Name}; breed of the animal: {animal.Breed}; species of the animal: {animal.Species}");
 }
 
 // Third source of inspiration: https://dev.to/satish/net-6-linq-new-features-opb
 
+// NEW: MaxBy and MinBy
+
 var oldestAnimal = animals.MaxBy(animal => animal.Age);
+var youngestAnimal = animals.MinBy(animal => animal.Age);
 
-Console.WriteLine($"The oldest dog: {oldestAnimal.Name}, {oldestAnimal.Breed}, {oldestAnimal.Age} years old");
+Console.WriteLine($"The oldest animal: {oldestAnimal.Name}, {oldestAnimal.Breed}, {oldestAnimal.Age} years old");
+Console.WriteLine($"The youngest animal: {youngestAnimal.Name}, {youngestAnimal.Breed}, {youngestAnimal.Age} years old");
 
+// NEW: Chunk
+
+var cluster = animals.Chunk(2);
+
+foreach (var clusteredAnimals in cluster)
+{
+    Console.WriteLine($"Size of the cluster: {clusteredAnimals.Length}");
+}
