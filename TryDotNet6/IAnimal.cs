@@ -14,6 +14,8 @@
         string Breed { get; set; }
 
         SpeciesEnum Species { get; set; }
+
+        int Age { get; set; }
     }
 }
 

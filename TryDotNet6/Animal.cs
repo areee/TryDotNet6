@@ -7,6 +7,8 @@
         public string Breed { get; set; }
 
         public IAnimal.SpeciesEnum Species { get; set; }
+
+        public int Age { get; set; }
     }
 }
 
