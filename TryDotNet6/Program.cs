@@ -14,6 +14,10 @@ DateOnly dateAfterTwoYears = DateOnly.FromDateTime(today.AddYears(2));
 
 Console.WriteLine($"Two years from now: {dateAfterTwoYears}");
 
+DateOnly dateAfterNinetyDays = DateOnly.FromDateTime(today.AddDays(90));
+
+Console.WriteLine($"Three months from now: {dateAfterNinetyDays}");
+
 // Another source of inspiration: https://twitter.com/okyrylchuk/status/1441084950518849536/photo/1
 
 List<Animal> animals = new();
